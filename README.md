@@ -28,4 +28,4 @@ Open the `.toe` file in TouchDesigner. The animation is procedural and will run 
 
 ### Project Links & Demos
 
-*   **Project Write-up:** [https://stevenmbenton.com/generative-particle-system/](https://https://stevenmbenton.com/generative-particle-system//)
+*   **Project Write-up:** [https://stevenmbenton.com/project/generative-particle-system/](https://stevenmbenton.com/project/generative-particle-system/)
