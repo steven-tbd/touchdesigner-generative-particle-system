@@ -1,31 +1,25 @@
-# Generative Particle System
+# TouchDesigner Generative Particle System
 
-A TouchDesigner project that evolves a static GLSL vertex displacement shader into a fully dynamic, animated visual system.
+A TouchDesigner project that extends the [GLSL Vertex Displacement](https://github.com/steven-tbd/Touchdesigner-GLSL-vertex-displacement) shader into an animated particle system driven by texture feedback and procedural motion.
 
-This project builds upon the foundational techniques of the [GLSL Vertex Displacement](https://github.com/steven-tbd/Touchdesigner-GLSL-vertex-displacement) project by introducing particle rendering, procedural motion, and complex texture processing to create a living, breathing piece of generative art.
+This work was reposted by the official TouchDesigner Instagram account.
 
-This work was recognized and reposted by the official TouchDesigner Instagram account.
-
-![TouchDesigner Particle System Animation](particle-animation-crop.gif)
-
+![TouchDesigner Particle System Animation](particle-animation.gif)
 
 ## How It Works
 
-This system uses the same core GLSL material from the previous project but builds a more complex generative engine around it.
+The system uses the same GLSL MAT from the GLSL Vertex Displacement project. The sphere geometry is converted into a particle system via a `Convert SOP`, replacing solid geometry with individual points that the shader displaces.
 
-1.  **Particle Rendering:** The base 3D geometry (e.g., a sphere) is converted into a particle system using a `Convert SOP`, allowing for a more intricate and granular visual style.
-2.  **Texture Pre-Processing:** Before the source texture is used to displace the particles, it is processed by a switchable effects module that includes a complex feedback loop, a radial blur, and a light tunnel effect. This allows the history of the texture's state to continually influence the particle system's form.
-3.  **Procedural Animation:** A Low-Frequency Oscillator (LFO) is used to drive the `dispScale` uniform of the GLSL shader, creating a natural, pulsing animation without manual keyframing.
-4.  **Post-Processing:** A final feedback loop is applied to the rendered output to create additional temporal blurring and visual echoes.
+Before reaching the shader, the source texture passes through a switchable effects module inside `container_fx`. The module includes a feedback loop, a radial blur, and a light tunnel effect. Because the feedback loop feeds the texture's previous state back into itself, the texture's history continuously shapes the particle positions.
+
+An LFO drives the `dispScale` uniform, creating a pulsing animation without keyframes. A second feedback loop on the final rendered output adds temporal blurring and visual echoes.
 
 ## Usage
 
-Open the `.toe` file in TouchDesigner. The animation is procedural and will run automatically. You can swap out the image using the media_input `Movie File In Top`. You can explore the `container_fx` component to switch between different texture pre-processing effects.
-
----
+Open the `.toe` file in TouchDesigner. The animation runs automatically. Swap the source image using the `Movie File In TOP` inside `media_input`. Switch between pre-processing effects inside the `container_fx` component.
 
 ![TouchDesigner Network](touchdesigner-network.png)
 
-### Project Links & Demos
+## Links
 
-*   **Project Write-up:** [https://stevenmbenton.com/project/generative-particle-system/](https://stevenmbenton.com/project/generative-particle-system/)
+- [Project Write-up](https://stevenmbenton.com/generative-particle-system/)
